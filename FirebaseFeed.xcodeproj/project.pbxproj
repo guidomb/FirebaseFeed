@@ -32,6 +32,9 @@
 		9D8D94CD1C62DF4C0077BCE7 /* rex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8D94CC1C62DF4C0077BCE7 /* rex.framework */; };
 		9D8D94CE1C62DF560077BCE7 /* rex.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D8D94CC1C62DF4C0077BCE7 /* rex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D8D94D01C6301F70077BCE7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D94CF1C6301F70077BCE7 /* StringExtensions.swift */; };
+		9DADBCBB1C66B91C00771139 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DADBCBA1C66B91C00771139 /* NewMessageController.swift */; };
+		9DE3936A1C6404DB0039984F /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE393691C6404DB0039984F /* FeedController.swift */; };
+		9DE3936C1C6409170039984F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE3936B1C6409170039984F /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +77,9 @@
 		9D8D94CA1C62B0780077BCE7 /* Firebase+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Firebase+RAC.swift"; sourceTree = "<group>"; };
 		9D8D94CC1C62DF4C0077BCE7 /* rex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rex.framework; path = Carthage/Build/iOS/rex.framework; sourceTree = "<group>"; };
 		9D8D94CF1C6301F70077BCE7 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		9DADBCBA1C66B91C00771139 /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		9DE393691C6404DB0039984F /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		9DE3936B1C6409170039984F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,9 @@
 				9D8D94CA1C62B0780077BCE7 /* Firebase+RAC.swift */,
 				9D7C897C1C6314C70064D45C /* UITextFieldExtensions.swift */,
 				9D7C898B1C631DB30064D45C /* User.swift */,
+				9DE393691C6404DB0039984F /* FeedController.swift */,
+				9DE3936B1C6409170039984F /* Message.swift */,
+				9DADBCBA1C66B91C00771139 /* NewMessageController.swift */,
 			);
 			path = FirebaseFeed;
 			sourceTree = "<group>";
@@ -217,7 +226,10 @@
 				9D7C898C1C631DB30064D45C /* User.swift in Sources */,
 				9D7C897D1C6314C80064D45C /* UITextFieldExtensions.swift in Sources */,
 				9D8D94CB1C62B0780077BCE7 /* Firebase+RAC.swift in Sources */,
+				9DE3936C1C6409170039984F /* Message.swift in Sources */,
 				9D8D94AC1C629C4A0077BCE7 /* AppDelegate.swift in Sources */,
+				9DE3936A1C6404DB0039984F /* FeedController.swift in Sources */,
+				9DADBCBB1C66B91C00771139 /* NewMessageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

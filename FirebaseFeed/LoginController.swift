@@ -91,18 +91,18 @@ final class LoginController: UIViewController {
             .map { email, password in !email.isEmpty && !password.isEmpty && email.isValidEmail() }
         let creadentialsAreValid = AnyProperty<Bool>(initialValue: false, producer: validCredentialsProducer)
         
-        let loginAction = Action<AnyObject, String, NSError>(enabledIf: creadentialsAreValid) { _  in
+        let loginAction = Action<AnyObject, (String, String), NSError>(enabledIf: creadentialsAreValid) { _  in
             let email = self.emailTextField.text!
             let password = self.passwordTextField.text!
             return self.firebaseClient.authUser(email, password: password)
-                .map { $0.uid }
+                .map { ($0.uid, $0.token) }
         }
         
-        let registerAction = Action<AnyObject, String, NSError>(enabledIf: creadentialsAreValid) { _  in
+        let registerAction = Action<AnyObject, (String, String), NSError>(enabledIf: creadentialsAreValid) { _  in
             let email = self.emailTextField.text!
             let password = self.passwordTextField.text!
             return self.firebaseClient.createUser(email, password: password)
-                .map { $0["uid"] as! String }
+                .map { ($0["uid"] as! String, $0["token"] as! String)  }
         }
         
         // Bind actions
@@ -132,7 +132,7 @@ final class LoginController: UIViewController {
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         
-        registerAction.values.observeOn(scheduler).observeNext { uid in
+        registerAction.values.observeOn(scheduler).observeNext { uid, token in
             let alert = UIAlertController(title: "Username", message: "Enter your username", preferredStyle: .Alert)
             let saveAction = UIAlertAction(title: "OK", style: .Default) { _ in
                 MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -143,6 +143,10 @@ final class LoginController: UIViewController {
                     .setValue([uid:userProperties])
                     .observeOn(scheduler)
                     .startWithNext { _ in
+                        let userDefaults = NSUserDefaults.standardUserDefaults()
+                        userDefaults.setObject(NSString(UTF8String: token), forKey: "auth-token")
+                        userDefaults.synchronize()
+                        
                         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                         alert.dismissViewControllerAnimated(true, completion: nil)
                         self.onLoggedInEvent(User(uid: uid, name: username))
@@ -158,17 +162,43 @@ final class LoginController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
-        loginAction.values.observeNext { uid in
+        loginAction.values.observeNext { uid, token in
             self.firebaseClient.childByAppendingPath("users/\(uid)")
                 .observeSingleEventOfType(.Value)
                 .observeOn(scheduler)
                 .startWithNext { snapshot in
+                    let userDefaults = NSUserDefaults.standardUserDefaults()
+                    userDefaults.setObject(NSString(UTF8String: token), forKey: "auth-token")
+                    userDefaults.synchronize()
+                    
                     let data = snapshot.value as! NSDictionary
                     let username = data["username"] as! String
                     self.onLoggedInEvent(User(uid: uid, name: username))
                 }
         }
 
+        // Login user if credentials are available
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let token = userDefaults.objectForKey("auth-token") as? String {
+            print("Logging in user using stored credentials")
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            firebaseClient.authWithCustomToken(token)
+                .flatMap(FlattenStrategy.Concat) { (authData: FAuthData) -> SignalProducer<User, NSError> in
+                    return self.firebaseClient.childByAppendingPath("users/\(authData.uid)")
+                        .observeSingleEventOfType(.Value)
+                        .flatMapError { _ in SignalProducer.empty }
+                        .map { snapshot in
+                            let data = snapshot.value as! NSDictionary
+                            let username = data["username"] as! String
+                            return User(uid: authData.uid, name: username)
+                        }
+                }
+                .observeOn(UIScheduler())
+                .startWithNext { user in
+                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    self.onLoggedInEvent(user)
+                }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

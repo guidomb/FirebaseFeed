@@ -27,6 +27,20 @@ extension Firebase {
         }
     }
     
+    func authWithCustomToken(token: String) -> SignalProducer<FAuthData, NSError> {
+        return SignalProducer { observable, disposable in
+            self.authWithCustomToken(token, withCompletionBlock: { error, authData in
+                if error == nil {
+                    observable.sendNext(authData)
+                    observable.sendCompleted()
+                } else {
+                    observable.sendFailed(error)
+                }
+            })
+        }
+    }
+    
+    
     func createUser(email: String, password: String) -> SignalProducer<FNewUserData, NSError> {
         return SignalProducer { observable, disposable in
             self.createUser(email, password: password, withValueCompletionBlock: { error, value in
@@ -54,7 +68,41 @@ extension Firebase {
         }
     }
     
-    func observeSingleEventOfType(type: FEventType) -> SignalProducer<FDataSnapshot, NSError> {
+    func updateChildValues(data: [NSObject : AnyObject]) -> SignalProducer<Firebase, NSError> {
+        return SignalProducer { observable, disposable in
+            self.updateChildValues(data, withCompletionBlock: { (error, ref) -> Void in
+                if error == nil {
+                    observable.sendNext(ref)
+                    observable.sendCompleted()
+                } else {
+                    observable.sendFailed(error)
+                }
+            })
+        }
+    }
+    
+    func observeSingleEventOfType(type: FEventType) -> SignalProducer<FDataSnapshot, NoError> {
+        return SignalProducer { observable, disposable in
+            self.observeSingleEventOfType(type, withBlock: { (snapshot) -> Void in
+                observable.sendNext(snapshot)
+                observable.sendCompleted()
+            })
+        }
+    }
+    
+    func observeEventType(type: FEventType) -> SignalProducer<FDataSnapshot, NoError> {
+        return SignalProducer { observable, disposable in
+            self.observeEventType(type, withBlock: { (snapshot) -> Void in
+                observable.sendNext(snapshot)
+            })
+        }
+    }
+    
+}
+
+extension FQuery {
+    
+    func rac_observeSingleEventOfType(type: FEventType) -> SignalProducer<FDataSnapshot, NoError> {
         return SignalProducer { observable, disposable in
             self.observeSingleEventOfType(type, withBlock: { (snapshot) -> Void in
                 observable.sendNext(snapshot)

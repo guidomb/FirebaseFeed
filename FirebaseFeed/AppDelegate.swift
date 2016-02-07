@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firebaseClient = Firebase(url: "https://fiery-inferno-1034.firebaseio.com/")
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = LoginController(firebaseClient: firebaseClient!) { user in
-            print("User logged in with uid: \(user.uid) and name: \(user.name)")
+            let controller = UINavigationController(rootViewController: FeedController(firebaseClient: self.firebaseClient!, user: user))
+            self.window?.rootViewController = controller
         }
         window?.makeKeyAndVisible()
         
