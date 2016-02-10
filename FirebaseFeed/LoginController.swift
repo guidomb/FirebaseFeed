@@ -91,18 +91,21 @@ final class LoginController: UIViewController {
             .map { email, password in !email.isEmpty && !password.isEmpty && email.isValidEmail() }
         let creadentialsAreValid = AnyProperty<Bool>(initialValue: false, producer: validCredentialsProducer)
         
+        let loginProducer = { (email: String, password: String) in
+            self.firebaseClient.authUser(email, password: password).map { ($0.uid as String, $0.token as String) }
+        }
+        
         let loginAction = Action<AnyObject, (String, String), NSError>(enabledIf: creadentialsAreValid) { _  in
             let email = self.emailTextField.text!
             let password = self.passwordTextField.text!
-            return self.firebaseClient.authUser(email, password: password)
-                .map { ($0.uid, $0.token) }
+            return loginProducer(email, password)
         }
         
         let registerAction = Action<AnyObject, (String, String), NSError>(enabledIf: creadentialsAreValid) { _  in
             let email = self.emailTextField.text!
             let password = self.passwordTextField.text!
             return self.firebaseClient.createUser(email, password: password)
-                .map { ($0["uid"] as! String, $0["token"] as! String)  }
+                .flatMap(.Concat) { _ in loginProducer(email, password) }
         }
         
         // Bind actions

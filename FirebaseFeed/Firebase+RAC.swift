@@ -111,4 +111,12 @@ extension FQuery {
         }
     }
     
+    func rac_observeEventType(type: FEventType) -> SignalProducer<FDataSnapshot, NoError> {
+        return SignalProducer { observable, disposable in
+            self.observeEventType(type, withBlock: { (snapshot) -> Void in
+                observable.sendNext(snapshot)
+            })
+        }
+    }
+    
 }

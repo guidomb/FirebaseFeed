@@ -11,10 +11,7 @@
 		9D7C897F1C63152F0064D45C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7C897E1C63152F0064D45C /* CFNetwork.framework */; };
 		9D7C89811C6315360064D45C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7C89801C6315360064D45C /* Security.framework */; };
 		9D7C89831C6315400064D45C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7C89821C6315400064D45C /* SystemConfiguration.framework */; };
-		9D7C89851C63154F0064D45C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7C89841C63154F0064D45C /* libc++.tbd */; };
-		9D7C89871C6315590064D45C /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7C89861C6315590064D45C /* libicucore.tbd */; };
 		9D7C89891C6315F30064D45C /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D7C89881C6315F30064D45C /* MBProgressHUD.framework */; };
-		9D7C898A1C6317960064D45C /* MBProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D7C89881C6315F30064D45C /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D7C898C1C631DB30064D45C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7C898B1C631DB30064D45C /* User.swift */; };
 		9D8D94AC1C629C4A0077BCE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D94AB1C629C4A0077BCE7 /* AppDelegate.swift */; };
 		9D8D94AE1C629C4A0077BCE7 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D94AD1C629C4A0077BCE7 /* LoginController.swift */; };
@@ -24,44 +21,19 @@
 		9D8D94C21C62A12B0077BCE7 /* Neon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8D94BF1C62A12B0077BCE7 /* Neon.framework */; };
 		9D8D94C31C62A12B0077BCE7 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8D94C01C62A12B0077BCE7 /* ReactiveCocoa.framework */; };
 		9D8D94C41C62A12B0077BCE7 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8D94C11C62A12B0077BCE7 /* Result.framework */; };
-		9D8D94C61C62A14D0077BCE7 /* Neon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D8D94BF1C62A12B0077BCE7 /* Neon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D8D94C71C62A14D0077BCE7 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D8D94C01C62A12B0077BCE7 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D8D94C81C62A14D0077BCE7 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D8D94C11C62A12B0077BCE7 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9D8D94C91C62A14D0077BCE7 /* Firebase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D8D94BD1C62A0CD0077BCE7 /* Firebase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D8D94CB1C62B0780077BCE7 /* Firebase+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D94CA1C62B0780077BCE7 /* Firebase+RAC.swift */; };
 		9D8D94CD1C62DF4C0077BCE7 /* rex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8D94CC1C62DF4C0077BCE7 /* rex.framework */; };
-		9D8D94CE1C62DF560077BCE7 /* rex.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9D8D94CC1C62DF4C0077BCE7 /* rex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D8D94D01C6301F70077BCE7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D94CF1C6301F70077BCE7 /* StringExtensions.swift */; };
 		9DADBCBB1C66B91C00771139 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DADBCBA1C66B91C00771139 /* NewMessageController.swift */; };
 		9DE3936A1C6404DB0039984F /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE393691C6404DB0039984F /* FeedController.swift */; };
 		9DE3936C1C6409170039984F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE3936B1C6409170039984F /* Message.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		9D8D94C51C62A13C0077BCE7 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				9D7C898A1C6317960064D45C /* MBProgressHUD.framework in CopyFiles */,
-				9D8D94CE1C62DF560077BCE7 /* rex.framework in CopyFiles */,
-				9D8D94C61C62A14D0077BCE7 /* Neon.framework in CopyFiles */,
-				9D8D94C71C62A14D0077BCE7 /* ReactiveCocoa.framework in CopyFiles */,
-				9D8D94C81C62A14D0077BCE7 /* Result.framework in CopyFiles */,
-				9D8D94C91C62A14D0077BCE7 /* Firebase.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		9D7C897C1C6314C70064D45C /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		9D7C897E1C63152F0064D45C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		9D7C89801C6315360064D45C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9D7C89821C6315400064D45C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9D7C89841C63154F0064D45C /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		9D7C89861C6315590064D45C /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		9D7C89881C6315F30064D45C /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		9D7C898B1C631DB30064D45C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9D8D94A81C629C4A0077BCE7 /* FirebaseFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,8 +60,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D7C89891C6315F30064D45C /* MBProgressHUD.framework in Frameworks */,
-				9D7C89871C6315590064D45C /* libicucore.tbd in Frameworks */,
-				9D7C89851C63154F0064D45C /* libc++.tbd in Frameworks */,
 				9D7C89831C6315400064D45C /* SystemConfiguration.framework in Frameworks */,
 				9D7C89811C6315360064D45C /* Security.framework in Frameworks */,
 				9D7C897F1C63152F0064D45C /* CFNetwork.framework in Frameworks */,
@@ -108,8 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				9D7C89881C6315F30064D45C /* MBProgressHUD.framework */,
-				9D7C89861C6315590064D45C /* libicucore.tbd */,
-				9D7C89841C63154F0064D45C /* libc++.tbd */,
 				9D7C89821C6315400064D45C /* SystemConfiguration.framework */,
 				9D7C89801C6315360064D45C /* Security.framework */,
 				9D7C897E1C63152F0064D45C /* CFNetwork.framework */,
@@ -160,7 +128,7 @@
 				9D8D94A41C629C4A0077BCE7 /* Sources */,
 				9D8D94A51C629C4A0077BCE7 /* Frameworks */,
 				9D8D94A61C629C4A0077BCE7 /* Resources */,
-				9D8D94C51C62A13C0077BCE7 /* CopyFiles */,
+				9D28EECE1C675C0A00BE9CD8 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -215,6 +183,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D28EECE1C675C0A00BE9CD8 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Neon.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Rex.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+				"$(SRCROOT)/Frameworks/Firebase.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9D8D94A41C629C4A0077BCE7 /* Sources */ = {
@@ -341,6 +332,10 @@
 				);
 				INFOPLIST_FILE = FirebaseFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-licucore",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.guidomb.FirebaseFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -357,6 +352,10 @@
 				);
 				INFOPLIST_FILE = FirebaseFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-licucore",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.guidomb.FirebaseFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

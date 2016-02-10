@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var firebaseClient: Firebase? = Optional.None
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Firebase.defaultConfig().persistenceEnabled = true
         firebaseClient = Firebase(url: "https://fiery-inferno-1034.firebaseio.com/")
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = LoginController(firebaseClient: firebaseClient!) { user in
