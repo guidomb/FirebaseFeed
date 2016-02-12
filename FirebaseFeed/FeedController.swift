@@ -16,7 +16,7 @@ func desarializeMessage(messageSnapshot: FDataSnapshot) -> Message {
     let messageContent = value["content"] as! String
     let userData = messageSnapshot.childSnapshotForPath("created_by").value as! [String : AnyObject]
     let createdBy = userData["username"] as! String
-    let createdAt = value["created_at"] as! Int
+    let createdAt = (value["created_at"] as! NSNumber).unsignedLongLongValue
     return Message(content: messageContent, createdAt: createdAt, createdBy: createdBy)
 }
 
@@ -159,10 +159,10 @@ final class FeedController: UITableViewController {
                     }
                     // Ordered query always returns in ascending order
                     messages = messages.reverse()
-                    print("Messags in first page: \(messages)")
+                    print("\(messages.count) messages in first page: \(messages)")
                     return messages
                 }
-        }
+            }
     }
     
     func listenForNewMessage() {
@@ -187,13 +187,14 @@ final class FeedController: UITableViewController {
             .observeOn(UIScheduler())
     }
     
-    func fetchMessagesNextPage(amount: UInt = 10) -> SignalProducer<[Message], NoError> {
+    func fetchMessagesNextPage(amount: UInt = 20) -> SignalProducer<[Message], NoError> {
         var query = firebaseClient.childByAppendingPath("feed")
             .queryOrderedByChild("created_at")
             .queryLimitedToLast(amount)
         
         if let lastMessage = messages.value.last {
-            query = query.queryEndingAtValue(lastMessage.createdAt, childKey: "created_at")
+            let createdAt = NSNumber(unsignedLongLong: lastMessage.createdAt)
+            query = query.queryEndingAtValue(createdAt, childKey: "created_at")
         }
         
         return query.rac_observeSingleEventOfType(.Value)
@@ -210,7 +211,7 @@ final class FeedController: UITableViewController {
                     // We remove the first because it is the oldest element in the previous
                     // page. queryEndingAtValue includes that element in the result
                     messages.removeFirst()
-                    print("Messages in fetched page: \(messages)")
+                    print("\(messages.count) messages in fetched page: \(messages)")
                     return messages
                 }
             }
@@ -229,7 +230,6 @@ final class FeedController: UITableViewController {
                 "created_at" : FirebaseServerValue.timestamp()
             ]
             
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             self.firebaseClient
                 .childByAppendingPath("feed")
                 .childByAutoId()
@@ -244,8 +244,10 @@ final class FeedController: UITableViewController {
                         let dismissAction = UIAlertAction(title: "OK", style: .Default) { _ in }
                         alert.addAction(dismissAction)
                         self.presentViewController(alert, animated: true, completion: nil)
-                    default:
-                        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                        // TODO we should find the message in the message list and delete it
+                        // probably also show the new message controller with the message for the user
+                        // to decide if he wants to post it again
+                    default: break
                     }
                 }
             self.navigationController?.popViewControllerAnimated(true)

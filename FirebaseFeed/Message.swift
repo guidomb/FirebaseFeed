@@ -11,7 +11,7 @@ import Foundation
 struct Message {
     
     let content: String
-    let createdAt: Int
+    let createdAt: UInt64
     let createdBy: String
 
 }
