@@ -24,6 +24,7 @@
 		9D8D94CB1C62B0780077BCE7 /* Firebase+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D94CA1C62B0780077BCE7 /* Firebase+RAC.swift */; };
 		9D8D94CD1C62DF4C0077BCE7 /* rex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8D94CC1C62DF4C0077BCE7 /* rex.framework */; };
 		9D8D94D01C6301F70077BCE7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8D94CF1C6301F70077BCE7 /* StringExtensions.swift */; };
+		9D8DB6F51C7013A6006FFE73 /* ExtendableArray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8DB6F41C7013A6006FFE73 /* ExtendableArray.framework */; };
 		9DADBCBB1C66B91C00771139 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DADBCBA1C66B91C00771139 /* NewMessageController.swift */; };
 		9DE3936A1C6404DB0039984F /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE393691C6404DB0039984F /* FeedController.swift */; };
 		9DE3936C1C6409170039984F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE3936B1C6409170039984F /* Message.swift */; };
@@ -49,6 +50,7 @@
 		9D8D94CA1C62B0780077BCE7 /* Firebase+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Firebase+RAC.swift"; sourceTree = "<group>"; };
 		9D8D94CC1C62DF4C0077BCE7 /* rex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = rex.framework; path = Carthage/Build/iOS/rex.framework; sourceTree = "<group>"; };
 		9D8D94CF1C6301F70077BCE7 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		9D8DB6F41C7013A6006FFE73 /* ExtendableArray.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExtendableArray.framework; path = "../ExtendableArray/build/Debug-iphoneos/ExtendableArray.framework"; sourceTree = "<group>"; };
 		9DADBCBA1C66B91C00771139 /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		9DE393691C6404DB0039984F /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		9DE3936B1C6409170039984F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8DB6F51C7013A6006FFE73 /* ExtendableArray.framework in Frameworks */,
 				9D7C89891C6315F30064D45C /* MBProgressHUD.framework in Frameworks */,
 				9D7C89831C6315400064D45C /* SystemConfiguration.framework in Frameworks */,
 				9D7C89811C6315360064D45C /* Security.framework in Frameworks */,
@@ -77,6 +80,7 @@
 		9D8D949F1C629C4A0077BCE7 = {
 			isa = PBXGroup;
 			children = (
+				9D8DB6F41C7013A6006FFE73 /* ExtendableArray.framework */,
 				9D7C89881C6315F30064D45C /* MBProgressHUD.framework */,
 				9D7C89821C6315400064D45C /* SystemConfiguration.framework */,
 				9D7C89801C6315360064D45C /* Security.framework */,
@@ -197,6 +201,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Rex.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
 				"$(SRCROOT)/Frameworks/Firebase.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ExtendableArray.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -329,6 +334,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ExtendableArray/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = FirebaseFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -349,6 +355,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Checkouts/ExtendableArray/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = FirebaseFeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

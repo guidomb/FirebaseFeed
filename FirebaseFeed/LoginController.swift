@@ -12,6 +12,7 @@ import Firebase
 import ReactiveCocoa
 import Rex
 import MBProgressHUD
+import Result
 
 final class LoginController: UIViewController {
 
@@ -142,10 +143,10 @@ final class LoginController: UIViewController {
                 // TODO handler error
                 let username = alert.textFields?.first?.text ?? ""
                 let userProperties = [ "username" : username ]
-                self.firebaseClient.childByAppendingPath("users")
-                    .setValue([uid:userProperties])
+                self.firebaseClient.childByAppendingPath("users/\(uid)")
+                    .setValue(userProperties)
                     .observeOn(scheduler)
-                    .startWithNext { _ in
+                    .startWithNext { [unowned self] _ in
                         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                         alert.dismissViewControllerAnimated(true, completion: nil)
                         print("Calling onLoggedInEvent callback")

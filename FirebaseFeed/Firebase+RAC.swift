@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import ReactiveCocoa
+import Result
 
 typealias FNewUserData = [NSObject : AnyObject]
 
