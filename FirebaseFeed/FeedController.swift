@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import ReactiveCocoa
 import MBProgressHUD
+import Result
 
 func desarializeMessage(messageSnapshot: FDataSnapshot) -> Message {
     let value = messageSnapshot.value as! [String : AnyObject]
